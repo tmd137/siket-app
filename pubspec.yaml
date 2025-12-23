@@ -39,6 +39,8 @@ dependencies:
   flutter_inappwebview: ^6.1.0
   path_provider: ^2.1.5
   http: ^1.6.0
+  kiosk_mode: ^0.2.0
+  wakelock_plus: ^1.4.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

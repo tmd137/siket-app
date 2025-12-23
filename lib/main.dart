@@ -7,9 +7,14 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:kiosk_mode/kiosk_mode.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //Start Kiosk Mode
+  startKioskMode();
 
   // Android TV immersive mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -62,6 +67,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
+    WakelockPlus.enable(); // Keeps the screen on indefinitely
     _init();
   }
 
@@ -252,7 +258,7 @@ class _DashboardPageState extends State<DashboardPage> {
         .rates-section {
             background-color: #586e6c; color: #fff;
             padding: 1vh 1vw; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+            overflow: hidden; width: 100% !important;
         }
 
         table { width: 100%; border-collapse: collapse; font-size: 2.8vh; }
